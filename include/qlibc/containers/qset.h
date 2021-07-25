@@ -56,7 +56,7 @@ typedef enum qset_status_e qset_status_t;
 
 /* public functions */
 enum {
-    QSET_THREADSAFE = (0x01),   /*      make it thread-safe         */ 
+    QSET_THREADSAFE = (1 << 0),   /*      make it thread-safe         */ 
 };
 
 enum qset_cmp_e {

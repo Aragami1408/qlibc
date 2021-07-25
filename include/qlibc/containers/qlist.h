@@ -49,7 +49,7 @@ typedef struct qlist_s qlist_t;
 typedef struct qlist_obj_s qlist_obj_t;
 
 enum {
-    QLIST_THREADSAFE = (0x01)  /*!< make it thread-safe */
+    QLIST_THREADSAFE = (1 << 0)  /*!< make it thread-safe */
 };
 
 /* member functions

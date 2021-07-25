@@ -50,7 +50,7 @@ typedef struct qtreetbl_obj_s qtreetbl_obj_t;
 
 /* public functions */
 enum {
-    QTREETBL_THREADSAFE = (0x01) /*!< make it thread-safe */
+    QTREETBL_THREADSAFE = (1 << 0) /*!< make it thread-safe */
 };
 
 extern qtreetbl_t *qtreetbl(int options); /*!< qtreetbl constructor */

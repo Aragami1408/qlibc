@@ -49,11 +49,11 @@ typedef struct qlisttbl_obj_s qlisttbl_obj_t;
 typedef struct qlisttbl_data_s qlisttbl_data_t;
 
 enum {
-    QLISTTBL_THREADSAFE      = (0x01),      /*!< make it thread-safe */
-    QLISTTBL_UNIQUE          = (0x01 << 1), /*!< keys are unique */
-    QLISTTBL_CASEINSENSITIVE = (0x01 << 2), /*!< keys are case insensitive */
-    QLISTTBL_INSERTTOP       = (0x01 << 3), /*!< insert new key at the top */
-    QLISTTBL_LOOKUPFORWARD   = (0x01 << 4), /*!< find key from the top (default: backward) */
+    QLISTTBL_THREADSAFE      = (1 << 0),      /*!< make it thread-safe */
+    QLISTTBL_UNIQUE          = (1 << 1), /*!< keys are unique */
+    QLISTTBL_CASEINSENSITIVE = (1 << 2), /*!< keys are case insensitive */
+    QLISTTBL_INSERTTOP       = (1 << 3), /*!< insert new key at the top */
+    QLISTTBL_LOOKUPFORWARD   = (1 << 4), /*!< find key from the top (default: backward) */
 };
 
 /* member functions
