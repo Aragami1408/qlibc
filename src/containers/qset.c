@@ -40,13 +40,13 @@
 
 #ifndef _DOXYGEN_SKIP
 
-static U64 __default_hash(const char *key);
-static bool __get_index(qset_t *set, const char *key, size_t hash, size_t *index);
-static bool __assign_node(qset_t *set, const char *key, size_t hash, size_t index);
-static void __free_index(qset_t *set, size_t index);
-static bool __set_contains(qset_t *set, const char *key, size_t hash);
-static bool __set_add(qset_t *set, const char *key, size_t hash);
-static void __relayout_nodes(qset_t *set, size_t start, short end_on_null);
+static inline uint64_t __default_hash(const char *key);
+static inline bool __get_index(qset_t *set, const char *key, size_t hash, size_t *index);
+static inline bool __assign_node(qset_t *set, const char *key, size_t hash, size_t index);
+static inline void __free_index(qset_t *set, size_t index);
+static inline bool __set_contains(qset_t *set, const char *key, size_t hash);
+static inline bool __set_add(qset_t *set, const char *key, size_t hash);
+static inline void __relayout_nodes(qset_t *set, size_t start, short end_on_null);
 
 #endif
 
@@ -484,16 +484,16 @@ void qset_free(qset_t *set) {
 
 #ifndef _DOXYGEN_SKIP
 
-static U64 __default_hash(const char *key) {
-    U64 i, len = strlen(key);
-    U64 h = 14695981039346656037ULL; 
+static inline uint64_t __default_hash(const char *key) {
+    uint64_t i, len = strlen(key);
+    uint64_t h = 14695981039346656037ULL; 
     for (i = 0; i < len; ++i) {
         h = h ^ (unsigned char) key[i];
         h = h * 1099511628211ULL; 
     }
     return h;
 }
-static bool __get_index(qset_t *set, const char *key, size_t hash, size_t *index) {
+static inline bool __get_index(qset_t *set, const char *key, size_t hash, size_t *index) {
     size_t i, idx;
     idx = hash % set->num_nodes;
     i = idx;
@@ -518,7 +518,7 @@ static bool __get_index(qset_t *set, const char *key, size_t hash, size_t *index
         }
     }
 }
-static bool __assign_node(qset_t *set, const char *key, size_t hash, size_t index) {
+static inline bool __assign_node(qset_t *set, const char *key, size_t hash, size_t index) {
     size_t len = strlen(key);
     qset_lock(set);
     set->nodes[index] = (qset_obj_t*)malloc(sizeof(qset_obj_t));
@@ -528,18 +528,18 @@ static bool __assign_node(qset_t *set, const char *key, size_t hash, size_t inde
     qset_unlock(set);
     return true;
 }
-static void __free_index(qset_t *set, size_t index) {
+static inline void __free_index(qset_t *set, size_t index) {
     qset_lock(set);
     free(set->nodes[index]->key);
     free(set->nodes[index]);
     set->nodes[index] = NULL;
     qset_unlock(set);
 }
-static bool __set_contains(qset_t *set, const char *key, size_t hash) {
+static inline bool __set_contains(qset_t *set, const char *key, size_t hash) {
     size_t index;
     return __get_index(set, key, hash, &index);
 }
-static bool __set_add(qset_t *set, const char *key, size_t hash) {
+static inline bool __set_add(qset_t *set, const char *key, size_t hash) {
     size_t index;
     qset_lock(set);
     if (__set_contains(set, key, hash)){
@@ -572,7 +572,7 @@ static bool __set_add(qset_t *set, const char *key, size_t hash) {
     qset_unlock(set);
     return res;
 }
-static void __relayout_nodes(qset_t *set, size_t start, short end_on_null) {
+static inline void __relayout_nodes(qset_t *set, size_t start, short end_on_null) {
     size_t index = 0, i;
     qset_lock(set);
     for (i = start; i < set->num_nodes; ++i) {

@@ -44,13 +44,12 @@
 extern "C" {
 #endif
 
-#define U64 uint64_t
 #define MAX_FULLNESS_PERCENT 0.25
 
 /* types */
 typedef struct qset_s qset_t;
 typedef struct qset_obj_s qset_obj_t;
-typedef U64 (*qset_hashfunction_t)(const char *key);
+typedef uint64_t (*qset_hashfunction_t)(const char *key);
 typedef enum qset_cmp_e qset_cmp_t;
 typedef enum qset_status_e qset_status_t;
 
@@ -105,7 +104,7 @@ extern void qset_free(qset_t *set);
 
 struct qset_obj_s {
     char *key;
-    U64 hash;
+    uint64_t hash;
 };
 
 struct qset_s {
