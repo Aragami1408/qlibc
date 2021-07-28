@@ -73,34 +73,34 @@ enum qset_status_e {
     QSET_EMPTY = ENOENT,        /*      NO ELEMENT                  */
 };
 
-extern qset_t *qset(size_t num_els, qset_hashfunction_t hash, int options);
+extern qset_t *         qset(size_t num_els, qset_hashfunction_t hash, int options);
 
-extern bool qset_add(qset_t *set, const char *key);
-extern bool qset_remove(qset_t *set, const char *key);
-extern bool qset_contains(qset_t *set, const char *key);
+extern bool             qset_add(qset_t *set, const char *key);
+extern bool             qset_remove(qset_t *set, const char *key);
+extern bool             qset_contains(qset_t *set, const char *key);
 
-extern size_t qset_length(qset_t *set);
-extern size_t qset_size(qset_t *set);
+extern size_t           qset_length(qset_t *set);
+extern size_t           qset_size(qset_t *set);
 
-extern qset_t *qset_union(qset_t *a, qset_t *b);
-extern qset_t *qset_intersection(qset_t *a, qset_t *b);
-extern qset_t *qset_difference(qset_t *a, qset_t *b);
-extern qset_t *qset_symmetric_difference(qset_t *a, qset_t *b);
+extern qset_t *         qset_union(qset_t *a, qset_t *b);
+extern qset_t *         qset_intersection(qset_t *a, qset_t *b);
+extern qset_t *         qset_difference(qset_t *a, qset_t *b);
+extern qset_t *         qset_symmetric_difference(qset_t *a, qset_t *b);
 
-extern bool qset_is_subset(qset_t *a, qset_t *b);
-extern bool qset_is_superset(qset_t *a, qset_t *b);
-extern bool qset_is_strsubset(qset_t *a, qset_t *b);
-extern bool qset_is_strsuperset(qset_t *a, qset_t *b);
+extern bool             qset_is_subset(qset_t *a, qset_t *b);
+extern bool             qset_is_superset(qset_t *a, qset_t *b);
+extern bool             qset_is_strsubset(qset_t *a, qset_t *b);
+extern bool             qset_is_strsuperset(qset_t *a, qset_t *b);
 
-extern qset_cmp_t qset_cmp(qset_t *a, qset_t *b);
+extern qset_cmp_t       qset_cmp(qset_t *a, qset_t *b);
 
-extern char **qset_toarray(qset_t *set, size_t *set_size);
-extern void qset_lock(qset_t *set);
-extern void qset_unlock(qset_t *set);
+extern char **          qset_toarray(qset_t *set, size_t *set_size);
+extern void             qset_lock(qset_t *set);
+extern void             qset_unlock(qset_t *set);
 
-extern void qset_clear(qset_t *set);
-extern bool qset_debug(qset_t *set, FILE *out);
-extern void qset_free(qset_t *set);
+extern void             qset_clear(qset_t *set);
+extern bool             qset_debug(qset_t *set, FILE *out);
+extern void             qset_free(qset_t *set);
 
 struct qset_obj_s {
     char *key;

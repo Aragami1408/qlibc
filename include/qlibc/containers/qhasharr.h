@@ -48,10 +48,10 @@ extern "C" {
 #define Q_HASHARR_DATASIZE (32)  /*!< knob for maximum data size in a slot. */
 
 /* types */
-typedef struct qhasharr_s qhasharr_t;
-typedef struct qhasharr_slot_s qhasharr_slot_t;
-typedef struct qhasharr_data_s qhasharr_data_t;
-typedef struct qhasharr_obj_s qhasharr_obj_t;
+typedef struct qhasharr_s       qhasharr_t;
+typedef struct qhasharr_slot_s  qhasharr_slot_t;
+typedef struct qhasharr_data_s  qhasharr_data_t;
+typedef struct qhasharr_obj_s   qhasharr_obj_t;
 
 /* member functions
  *
@@ -59,32 +59,32 @@ typedef struct qhasharr_obj_s qhasharr_obj_t;
  *  - tbl->put(tbl, ...);      // easier to switch the container type to other kinds.
  *  - qhasharr_put(tbl, ...);  // where avoiding pointer overhead is preferred.
  */
-extern qhasharr_t *qhasharr(void *memory, size_t memsize);
-extern size_t qhasharr_calculate_memsize(int max);
+extern qhasharr_t *     qhasharr(void *memory, size_t memsize);
+extern size_t           qhasharr_calculate_memsize(int max);
 
-extern bool qhasharr_put(qhasharr_t *tbl, const char *key, const void *value,
-                size_t size);
-extern bool qhasharr_putstr(qhasharr_t *tbl, const char *key, const char *str);
-extern bool qhasharr_putstrf(qhasharr_t *tbl, const char *key, const char *format, ...);
-extern bool qhasharr_put_by_obj(qhasharr_t *tbl, const void *name, size_t namesize,
+extern bool             qhasharr_put(qhasharr_t *tbl, const char *key, const void *value,
+                                size_t size);
+extern bool             qhasharr_putstr(qhasharr_t *tbl, const char *key, const char *str);
+extern bool             qhasharr_putstrf(qhasharr_t *tbl, const char *key, const char *format, ...);
+extern bool             qhasharr_put_by_obj(qhasharr_t *tbl, const void *name, size_t namesize,
                                 const void *data, size_t datasize);
 
-extern void *qhasharr_get(qhasharr_t *tbl, const char *key, size_t *size);
-extern char *qhasharr_getstr(qhasharr_t *tbl, const char *key);
-extern void *qhasharr_get_by_obj(qhasharr_t *tbl, const void *name, size_t namesize,
-                                 size_t *datasize);
+extern void *           qhasharr_get(qhasharr_t *tbl, const char *key, size_t *size);
+extern char *           qhasharr_getstr(qhasharr_t *tbl, const char *key);
+extern void *           qhasharr_get_by_obj(qhasharr_t *tbl, const void *name, size_t namesize,
+                                size_t *datasize);
 
-extern bool qhasharr_remove(qhasharr_t *tbl, const char *key);
-extern bool qhasharr_remove_by_obj(qhasharr_t *tbl, const char *name, size_t namesize);
-extern bool qhasharr_remove_by_idx(qhasharr_t *tbl, int idx);
+extern bool             qhasharr_remove(qhasharr_t *tbl, const char *key);
+extern bool             qhasharr_remove_by_obj(qhasharr_t *tbl, const char *name, size_t namesize);
+extern bool             qhasharr_remove_by_idx(qhasharr_t *tbl, int idx);
 
-extern bool qhasharr_getnext(qhasharr_t *tbl, qhasharr_obj_t *obj, int *idx);
+extern bool             qhasharr_getnext(qhasharr_t *tbl, qhasharr_obj_t *obj, int *idx);
 
-extern int qhasharr_size(qhasharr_t *tbl, int *maxslots, int *usedslots);
-extern void qhasharr_clear(qhasharr_t *tbl);
-extern bool qhasharr_debug(qhasharr_t *tbl, FILE *out);
+extern int              qhasharr_size(qhasharr_t *tbl, int *maxslots, int *usedslots);
+extern void             qhasharr_clear(qhasharr_t *tbl);
+extern bool             qhasharr_debug(qhasharr_t *tbl, FILE *out);
 
-extern void qhasharr_free(qhasharr_t *tbl);
+extern void             qhasharr_free(qhasharr_t *tbl);
 
 
 /**

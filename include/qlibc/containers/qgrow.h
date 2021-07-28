@@ -52,21 +52,21 @@ enum {
     QGROW_THREADSAFE = (QLIST_THREADSAFE)  /*!< make it thread-safe */
 };
 
-extern qgrow_t *qgrow(int options);
+extern qgrow_t *        qgrow(int options);
 
-extern bool qgrow_add(qgrow_t *grow, const void *object, size_t size);
-extern bool qgrow_addstr(qgrow_t *grow, const char *str);
-extern bool qgrow_addstrf(qgrow_t *grow, const char *format, ...);
+extern bool             qgrow_add(qgrow_t *grow, const void *object, size_t size);
+extern bool             qgrow_addstr(qgrow_t *grow, const char *str);
+extern bool             qgrow_addstrf(qgrow_t *grow, const char *format, ...);
 
-extern size_t qgrow_size(qgrow_t *grow);
-extern size_t qgrow_datasize(qgrow_t *grow);
+extern size_t           qgrow_size(qgrow_t *grow);
+extern size_t           qgrow_datasize(qgrow_t *grow);
 
-extern void *qgrow_toarray(qgrow_t *grow, size_t *size);
-extern char *qgrow_tostring(qgrow_t *grow);
+extern void *           qgrow_toarray(qgrow_t *grow, size_t *size);
+extern char *           qgrow_tostring(qgrow_t *grow);
 
-extern void qgrow_clear(qgrow_t *grow);
-extern bool qgrow_debug(qgrow_t *grow, FILE *out);
-extern void qgrow_free(qgrow_t *grow);
+extern void             qgrow_clear(qgrow_t *grow);
+extern bool             qgrow_debug(qgrow_t *grow, FILE *out);
+extern void             qgrow_free(qgrow_t *grow);
 
 /**
  * qgrow container object

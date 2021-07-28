@@ -62,7 +62,7 @@ enum {
  *  - tbl->put(tbl, ...);      // easier to switch the container type to other kinds.
  *  - qlisttbl_put(tbl, ...);  // where avoiding pointer overhead is preferred.
  */
-extern qlisttbl_t *qlisttbl(int options);  /*!< qlisttbl constructor */
+extern qlisttbl_t *     qlisttbl(int options);  /*!< qlisttbl constructor */
 
 extern bool qlisttbl_put(qlisttbl_t *tbl, const char *name, const void *data, size_t size);
 extern bool qlisttbl_putstr(qlisttbl_t *tbl, const char *name, const char *str);
